@@ -25,6 +25,21 @@ public class SacolaServiceImpl implements SacolaService {
     @Override
     public Item incluirItemNaSacola(ItemDto itemDto) {
         Sacola sacola = verSacola(itemDto.getSacolaId());
+
+        if(sacola.isFechada()) {
+            throw new RuntimeException("Esta sacola está fechada.");
+        }
+
+        Item.builder()
+                .quantidade(itemDto.getQuantidade())
+                .sacola(sacola)
+                .produto(produtoRepository.findById(itemDto.getProdutoId()).orElseThrow(
+                        () -> {
+                            throw new RuntimeException("Esse produto não existe!");
+                        }
+                ))
+                .build();
+
         return null;
     }
 
