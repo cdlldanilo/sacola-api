@@ -20,6 +20,7 @@ public class SacolaResource {
 
     @GetMapping("/{id}")
     public Sacola verSacola(@PathVariable("id") Long id)  {
+
         return sacolaService.verSacola(id);
     }
 
