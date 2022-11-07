@@ -24,6 +24,7 @@ public class SacolaServiceImpl implements SacolaService {
 
     @Override
     public Item incluirItemNaSacola(ItemDto itemDto) {
+        Sacola sacola = verSacola(itemDto.getSacolaId());
         return null;
     }
 
