@@ -24,40 +24,7 @@ public class SacolaServiceImpl implements SacolaService {
 
     @Override
     public Item incluirItemNaSacola(ItemDto itemDto) {
-
-        Sacola sacola = verSacola(itemDto.getSacolaId());
-
-        if(sacola.isFechada()) {
-           throw new RuntimeException("Essa sacola está fechada.");
-        }
-
-        Item itemParaSerInserido = Item.builder()
-                .quantidade(itemDto.getQuantidade())
-                .sacola(sacola)
-                .produto(produtoRepository.findById(itemDto.getProdutoId()).orElseThrow(
-                        () -> {
-                            throw new RuntimeException("Esse produto não existe!");
-                        }
-                ))
-                .build();
-
-        List<Item> itensDaSacola = sacola.getItens();
-        if(itensDaSacola.isEmpty()) {
-            itensDaSacola.add(itemParaSerInserido);
-        } else {
-            Restaurante restauranteAtual = itensDaSacola.get(0).getProduto().getRestaurante();
-            Restaurante restauranteDoItemParaAdicionar = itemParaSerInserido.getProduto().getRestaurante();
-            if(restauranteAtual.equals(restauranteDoItemParaAdicionar)) {
-                itensDaSacola.add(itemParaSerInserido);
-            } else {
-                throw  new RuntimeException("Não é possível adicionar  produtos de restaurante diferentes. Feche a sacola ou esvazie.");
-            }
-        }
-
-        List<Double>
-
-        sacolaRepository.save(sacola);
-        return itemParaSerInserido;
+        return null;
     }
 
     @Override
