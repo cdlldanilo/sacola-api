@@ -54,7 +54,7 @@ public class SacolaServiceImpl implements SacolaService {
         }
         sacolaRepository.save(sacola);
 
-        return itemRepository.save(itemParaSerInserido);
+        return itemParaSerInserido;
     }
 
     @Override
